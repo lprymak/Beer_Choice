@@ -6,6 +6,7 @@ Uses larger beer database of 60000+ beer names
 
 Kmeans clustering model cluster -  main beer style by users' overall reviews
 
+
 Homepage changes
 - Change layout to a simpler, easier to read format
 - Add links to data sites
