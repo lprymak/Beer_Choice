@@ -100,3 +100,10 @@ input {
 .rscaleNote {
   transform: translate(50px, 10px);
 }
+@media (max-width: 992px) {
+  .form-control {
+    width: 160%;
+    height: 35px;
+    font-size: 1.25rem;
+  }
+}

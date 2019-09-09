@@ -675,7 +675,9 @@ function drawPieChart2(style_data, cluster_data, style) {
             b: 10,
             t: 50,
             pad: 0
-        }
+        },
+        plot_bgcolor:"none",
+        paper_bgcolor:"none"
       };
       
     Plotly.newPlot('pie', data, layout, {displayModeBar: false});

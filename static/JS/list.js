@@ -44,7 +44,7 @@ d3.json('/run', function (data) {
                     stats['beer_style'] = indx.beer_style;
                     stats['ratings'] = beer_ratings;
                     if (indx.img_url == 'unknown' || indx.img_url == '/img/no-label.png') {
-                        stats['image_url'] = 'static/Images/beericon.png';
+                        stats['image_url'] = 'static/Images/beericon.svg';
                     }
                     else {
                         stats['image_url'] = indx.img_url;
