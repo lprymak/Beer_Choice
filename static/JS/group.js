@@ -745,7 +745,7 @@ function createTreeMap(clusterdata, chosenText) {
 
     var svg = d3.select('#tree').append('div').classed('treediv', true)
         .append('svg').attr('width', '100%')
-        .attr('height', '100%')
+        .attr('height', '80%')
         .classed('treeholder', true).append('g');
 
     var tree = {
