@@ -29,12 +29,12 @@ d3.json('/top', function (data) {
                 main_styles[indx.main_style] = main_count;
                 style_clusters[i] = main_styles;
 
-                beer_ratings['group_overall'] = indx.cluster_review_overall_beer_per_style;
-                beer_ratings['group_taste'] = indx.cluster_review_taste_beer_per_style;
-                beer_ratings['group_palate'] = indx.cluster_review_palate_beer_per_style;
-                beer_ratings['group_aroma'] = indx.cluster_review_aroma_beer_per_style;
-                beer_ratings['group_appearance'] = indx.cluster_review_appearance_beer_per_style;
-                beer_ratings['sub_style_cluster_count'] = indx.sub_style_cluster_count;
+                beer_ratings['group_overall'] = indx.cluster_review_overall_beer;
+                beer_ratings['group_taste'] = indx.cluster_review_taste_beer;
+                beer_ratings['group_palate'] = indx.cluster_review_palate_beer;
+                beer_ratings['group_aroma'] = indx.cluster_review_aroma_beer;
+                beer_ratings['group_appearance'] = indx.cluster_review_appearance_beer;
+                beer_ratings['sub_style_cluster_count'] = indx.beer_style_total_beers;
 
 
                 stats['brewery'] = indx.brewery_name;
@@ -42,7 +42,7 @@ d3.json('/top', function (data) {
                 stats['main_style'] = indx.main_style;
                 stats['beer_style'] = indx.beer_style;
                 stats['ratings'] = beer_ratings;
-                stats['total_per_cluster'] = indx.cluster_review_appearance_beer_per_style;
+                stats['total_per_cluster'] = indx.cluster_total_reviews_per_beer;
                 stats['total_overall'] = indx.full_total_beers;
                 beers[indx.beer_name] = stats;
 
@@ -353,17 +353,17 @@ function rollOver(blockgroup, cluster, style_clusters, ChosenValue) {
                 d3.select('.pie').classed('vis', true).classed('hid', false); 
                 d3.select('.pie .card-head').append('h4')
                     .text(`Cluster ${+chosenCluster + 1}: ${chosenStyle} - Sub-styles`).classed('sectionTitles', true)
-                    .style('font-size', '1rem');
-                if (window.matchMedia("(max-width: 992px)").matches) { 
-                    d3.select('.tree').style('top', '0%');
-                }
-                else {
-                    d3.select('.tree').style('top', '-36.5%');
-                }
+                    .style('font-size', '0.9rem');
+                // if (window.matchMedia("(max-width: 992px)").matches) { 
+                //     d3.select('.tree').style('top', '0%');
+                // }
+                // else {
+                //     d3.select('.tree').style('top', '-36.5%');
+                // }
             }
             else {
                 clearBubbles();
-                d3.select('.tree').style('top', '0%');
+                // d3.select('.tree').style('top', '0%');
                 d3.select('.pie .card-head').html('');
                 d3.select('.pie').classed('vis', false).classed('hid', true); 
                 notation();
@@ -459,7 +459,7 @@ function bubblePackChoice(clusterdata, cluster, value) {
     d3.select('#bubbles').select('svg').selectAll('circle').remove();
 
     // Height, width for packed bubble plot
-    var width = 340, height = 300;
+    var width = 320, height = 320;
 
     var voveralls = [];
 
@@ -468,19 +468,19 @@ function bubblePackChoice(clusterdata, cluster, value) {
     })
 
     var colorScale = d3.scaleLinear().domain([3.7, 5]).range(['#5ac47c', '#FF1177']);
-    if (cluster == 1) {
+    if (cluster == 1 || cluster == 32) {
         var sizescale = d3.scaleSqrt()
             .domain([1, 2000])
-            .range([8, 25]);
+            .range([8, 45]);
         var forceScale = d3.scaleLinear().domain([d3.min(voveralls), d3.max(voveralls)])
-            .range(35, 15);
+            .range(35, 5);
     }
     else {
         var sizescale = d3.scaleSqrt()
-            .domain([1, 10])
-            .range([8, 25]);
+            .domain([1, 15])
+            .range([8, 45]);
         var forceScale = d3.scaleLinear().domain([d3.min(voveralls), d3.max(voveralls)])
-            .range(35, 15);
+            .range(35, 5);
     }
 
     // Defines nodes for bubbles and binds data
@@ -504,7 +504,7 @@ function bubblePackChoice(clusterdata, cluster, value) {
         .force('charge', d3.forceManyBody().strength(function (d) {
             return forceScale(d.radius)
         }))
-        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('center', d3.forceCenter((width - 40) / 2, height / 2))
         .force('collision', d3.forceCollide().radius(function (d) {
             return sizescale(d.radius)
         }))
@@ -646,7 +646,7 @@ function drawPieChart2(style_data, cluster_data, style) {
 
     var lgth = Object.values(new_data).length;
 
-    var width = 340, height = 320;
+    var width = 320, height = 320;
     var colorscale = d3.scaleLinear().domain([0, lgth]).range(['#ff1177', '#5ac47c']);
 
     var val = [];
@@ -753,7 +753,7 @@ function createTreeMap(clusterdata, chosenText) {
         children: data
     };
 
-    var root = d3.hierarchy(tree).sum(function (d) { return d.value }) // Here the size of each leave is given in the 'value' field in input data
+    var root = d3.hierarchy(tree).sum(function (d) { return d.value }) // The size of each leave is given in the 'value' field in input data
 
     var treemap = d3.treemap()
         .size([width - 2*margin.left, height - 2*margin.top])

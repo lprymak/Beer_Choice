@@ -154,6 +154,13 @@ hr {
   border-color: #f8f9fa;
   background-color: rgba(255, 255, 255, 0.80)
 }
+.hm .card, .tree .card {
+  padding-left: 0;
+  margin-right: 0;
+}
+.bubbles .card {
+  margin-right: 0;
+}
 .cardfill {
   margin-top: 0%;
   margin-bottom: 0%;
@@ -413,7 +420,7 @@ input:focus {
 .topEntry .sectionTitles {
   padding-top: 2%;
 }
-.list .sectionTitles {
+.list .sectionTitles, .tree .sectionTitles, .bubbles .sectionTitles, .grhead .sectionTitles {
   padding-top: 0.25rem;
 }
 .ptitle {
@@ -566,7 +573,7 @@ tr {
 /* Group ---------------------------------------------------- */
 
 .hm_cd {
-  margin-left: 4%;
+  margin-left: 2%;
   margin-top: 6%;
   height: 500px;
   overflow-y: scroll;
@@ -587,6 +594,8 @@ tr {
 }
 #bubbles {
   margin-top: 3%;
+  margin-right: 0;
+  background-color: transparent;
 }
 .bubbles {
   /* margin-top: 3%; */
