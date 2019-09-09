@@ -3,13 +3,13 @@ d3.json('/top', function (data) {
 
     var clusters = {}
     var style_clusters = {};
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 32; i++) {
         stats = {}
         clusters[i] = stats;
         var style_clusters = {};
     }
     
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 32; i++) {
         var beers = {};
         var styles = {};
         var main_styles = {};
@@ -208,10 +208,10 @@ function drawBoxes2(data, set_styles, style_clusters, chosenText) {
 
     var xLinearScale = d3.scaleLinear()
         .domain([0,13])
-        .range([50, swidth - 100]);
+        .range([50, swidth - 80]);
     var yLinearScale = d3.scaleLinear()
         .domain([0,29])
-        .range([sheight - 70, 70]);
+        .range([sheight - 70, 90]);
     
     var scaledWidth = xLinearScale(2) - xLinearScale(1);
     var scaledHeight = yLinearScale(1) - yLinearScale(2);
@@ -241,7 +241,7 @@ function drawBoxes2(data, set_styles, style_clusters, chosenText) {
         .data(set_styles)
         .enter()
         .append("text")
-        .attr("x", (d, i) => xLinearScale(i) + 25)
+        .attr("x", (d, i) => xLinearScale(i*1.025) + 15)
         .attr("y", (d, i) => (i%2 * 20) + 40)
         .text(d => splitStyle(d))
         .attr('text-anchor', 'middle')
@@ -331,10 +331,10 @@ function rollOver(blockgroup, cluster, style_clusters, ChosenValue) {
     
             if (d3.select(this).nodes()[0].style.fill !== 'rgb(255, 255, 255)') {
                 d3.select(this)
-                    .attr('width', scaledWidth)
+                    .attr('width', scaledWidth * 1.04)
                     .attr('transform', `translate(${0} , ${0})`)
                     .style("stroke", strokecolor)
-                    .attr('height', scaledHeight * .83);
+                    .attr('height', scaledHeight * .78);
                     toolTip.hide(labels);
             }
         }).on('click', function () {
