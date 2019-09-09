@@ -1,7 +1,9 @@
 # Beer_Choice
 
 Beer Recommender Refined - using Kmeans clustering unsupervised machine learning, Python, Javascript, D3, Plotly
+
 Uses larger beer database of 60000+ beer names
+
 Kmeans clustering model cluster -  main beer style by users' overall reviews
 
 Homepage changes
