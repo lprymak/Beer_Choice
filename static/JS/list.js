@@ -68,18 +68,11 @@ d3.json('/run', function (data) {
 
                     style_stats['total_per_cluster'] = indx.cluster_total_reviews_per_style;
                     style_stats['total_beers_by_style_all'] = indx.main_style_total_beers;
-                    // style_stats['total_overall'] = indx.cluster_total_beers_per_style;
                     style_stats['main_style_cluster_count'] = indx.cluster_total_beers_per_style;
                     style_stats['total_beers_cluster_by_style'] = indx.cluster_total_beers_per_style;
 
                     styles[indx.main_style] = style_stats;
 
-                    // group_stats['avg_overall'] = indx.review_overall_per_group_full;
-                    // group_stats['avg_taste'] = indx.review_taste_per_group_full;
-                    // group_stats['avg_palate'] = indx.review_palate_per_group_full;
-                    // group_stats['avg_aroma'] = indx.review_aroma_per_group_full;
-                    // group_stats['avg_appearance'] = indx.review_appearance_per_group_full;
-                    // group_stats['total_per_cluster'] = indx.full_total_groups;
                     group_stats['total_beers'] = indx.cluster_total_beers;
                     group_stats['total_reviews'] = indx.cluster_review_totals;
                     group_stats['total_users'] = indx.cluster_total_users;
@@ -144,6 +137,10 @@ d3.json('/run', function (data) {
         .attr('x', 0)
         .classed('list_item', true).style('background-color', 'rgba(255,255,255,0.75)')
         .style('margin-top', '3%');
+    
+    // Add bottom margin to last item
+    var last_listitem = d3.selectAll('.list_item').nodes().slice(-1)[0];
+    d3.select(last_listitem).style('margin-bottom', '3%');
     
     // Creates beer titles
     rect_group.nodes().forEach((rect, i) => {
@@ -443,33 +440,8 @@ function createScatter(data, chosenValue) {
         totals[d] = { 'style_total': +total_by_style[i], 'overall_total': 65679, 'overall': averages[0][i], 'palate': averages[3][i], 'aroma': averages[2][i], 'appearance': averages[4][i], 'taste': averages[1][i] };
     })
 
-    // var totals = {};
-    // set_styles.forEach((style, i) => {
-    //     var value_list = {};
-    //     if (data.styles[style]) {
-    //         value_list['overall'] = data.styles[style].mean_overall;
-    //         value_list['taste'] = data.styles[style].mean_taste;
-    //         value_list['aroma'] = data.styles[style].mean_aroma;
-    //         value_list['appearance'] = data.styles[style].mean_appearance;
-    //         value_list['palate'] = data.styles[style].mean_palate;
-    //         value_list['total'] = +data.styles[style].total_beers_by_style_all / total_beers * 100;
-    //         // value_list['all'] = totals[style];
-    //     }
-    //     else {
-    //         value_list['overall'] = 0;
-    //         value_list['taste'] = 0;
-    //         value_list['aroma'] = 0;
-    //         value_list['appearance'] = 0;
-    //         value_list['palate'] = 0;
-    //         value_list['total'] = 0;
-    //         // value_list['all'] = totals[style];
-    //     }
-    //     totals[style] = value_list;
-    // })
-    
-
     console.log(totals);
-    // 
+
     var style_values = {};
     set_styles.forEach((style, i) => {
         var value_list = {};

@@ -9,6 +9,7 @@ d3.json('/top', function (data) {
         var style_clusters = {};
     }
     
+    // Reformat data
     for (var i = 0; i < 32; i++) {
         var beers = {};
         var styles = {};
@@ -74,20 +75,17 @@ d3.json('/top', function (data) {
     console.log(clusters);
 
     d3heatmap(Object.values(clusters), style_clusters);
-    drawTable();
     d3.select('.pie').classed('vis', false).classed('hid', true);
 
     clearBubbles();
 
 })
 
+// Draws heatmap, color scale
 function d3heatmap(data, style_clusters) {
 
-    // var value = 'group_overall';
     var set_styles = ['Bocks', 'Brown Ales', 'Dark Ales', 'Dark Lagers', 'Hybrid Beers', 'India Pale Ales', 'Pale Ales', 'Pilseners and Pale Lagers', 'Porters', 'Specialty Beers', 'Stouts', 'Strong Ales', 'Wheat Beers', 'Wild/Sour Beers'];
-    // var xlabels = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29];
-    // var zaps = [], zas = [], zps = [], zts = [], zos = [], zss = [];
-    // var beers = [];
+    // var xlabels = [...Array(32).keys()];
     
     var legend_container = d3.select('#hm_legend').append('svg').attr('height', '90%').attr('width', '90%')
         .append('g');
@@ -98,27 +96,7 @@ function d3heatmap(data, style_clusters) {
 
 }
 
-function rollOver() {
-
-    // var squares = d3.selectAll('.hmsquare');
-
-    var toolTip = d3.tip()
-        .attr("class", "d3-tip")
-        .offset([90, 65])
-        .html(function (d) {
-            return (`${d.county[0]}, ${d.state[0]}<br>${xlabel} ${d[chosenXAxis][yrs[chosenYear]]}<br>${ylabel} ${d[chosenYAxis][yrs[chosenYear]]}`);
-        });
-
-    circleGroup.call(toolTip);
-
-    circleGroup.on("mouseover", function (labels) {
-        toolTip.show(labels, this);
-    })
-        .on("mouseout", function (labels) {
-            toolTip.hide(labels);
-        });
-}
-
+// Controls colors represented by dropdown value choice
 function chooseHeatMapValue(data, set_styles, style_clusters) {
 
     var btns = d3.selectAll('.hmbtn');
@@ -126,8 +104,6 @@ function chooseHeatMapValue(data, set_styles, style_clusters) {
     createTreeMap(data, "Overall");
 
     btns.on("click", function () {
-
-        console.log(this);
 
         d3.selectAll('.d3-tip_bubble').remove();
         var drdnText = d3.select(".hmbtngr").text();
@@ -153,10 +129,10 @@ function chooseHeatMapValue(data, set_styles, style_clusters) {
     });
 }
 
+// Draws heatmap boxes, axis labels
 function drawBoxes2(data, set_styles, style_clusters, chosenText) {
 
-    var labels = { 'Overall': 'overall', 'Taste': 'taste', 'Palate': 'palate', 'Appearance': 'appearance', 'Aroma': 'aroma' };
-    var value = labels[chosenText];
+    var value = chosenText.toLowerCase();
 
     var cluster_dict = {};
     Object.values(data).forEach((cluster, i) => {
@@ -287,6 +263,7 @@ function drawBoxes2(data, set_styles, style_clusters, chosenText) {
     
 }
 
+// Rollover heatmap block function
 function rollOver(blockgroup, cluster, style_clusters, ChosenValue) {
 
     var toolTip = d3.tip()
@@ -354,16 +331,9 @@ function rollOver(blockgroup, cluster, style_clusters, ChosenValue) {
                 d3.select('.pie .card-head').append('h4')
                     .text(`Cluster ${+chosenCluster + 1}: ${chosenStyle} - Sub-styles`).classed('sectionTitles', true)
                     .style('font-size', '0.9rem');
-                // if (window.matchMedia("(max-width: 992px)").matches) { 
-                //     d3.select('.tree').style('top', '0%');
-                // }
-                // else {
-                //     d3.select('.tree').style('top', '-36.5%');
-                // }
             }
             else {
                 clearBubbles();
-                // d3.select('.tree').style('top', '0%');
                 d3.select('.pie .card-head').html('');
                 d3.select('.pie').classed('vis', false).classed('hid', true); 
                 notation();
@@ -556,18 +526,6 @@ function notation() {
         .style('color', '#b9b9b9').attr('text-anchor', 'middle').style('font-size', '0.7rem');
 }
 
-// Function to create summary table - not used
-function drawTable() {
-
-    var labels = [{ 'Cluster: ': ' -' }, { 'Style: ': ' -' }, { 'Avg Overall Rating (Cluster): ': ' -' },
-        { 'Avg Taste Rating (Cluster): ': ' -' }, { 'Avg Palate Rating (Cluster): ': ' -' },
-        { 'Avg Aroma Rating (Cluster): ': ' -' }, { 'Avg Appearance Rating (Cluster): ': ' -' }];
-    var tbl = d3.select('#bubble_table').append('table').append('tbody');
-    tbl.selectAll('tr').data(labels).enter().append('tr').style('font-size', '0.75rem')
-        .html(d => `<th>${Object.keys(d)}</th><td>${Object.values(d)}</td>`);
-    
-}
-
 // Function to fill summary table - not used
 function alterTable(element, data) {
 
@@ -590,7 +548,6 @@ function clearBubbles() {
         d3.select('#bubbles').html('');
         d3.select('#bubble_table').html('');
         d3.selectAll('.d3-tip_bubble').remove();
-        drawTable();
         notation();
         d3.select('.pie').classed('vis', false).classed('hid', true);  
         d3.select('.tree').style('top', '0%');
@@ -693,7 +650,7 @@ function bubblePlotHoverChoice(objs) {
 
     var toolTip = d3.tip()
         .attr("class", "d3-tip_bubble")
-        .offset([-7, -95])
+        .offset([80, -175])
         .html(function (d) {
             return (`${d.id}<br>${d.brewery}<br>Style: ${d.style}: ${d.substyle}<br>Times Reviewed: ${d.radius}<br>Overall: ${d.overall}<br>Taste: ${d.taste}<br>Palate: ${d.palate}<br>Aroma: ${d.aroma}<br>Appearance: ${d.appearance}`);
         });
