@@ -25,6 +25,12 @@ Heroku deployment instructions found [here](https://github.com/lprymak/Beer_Choi
 
 ## Build
 
+- The database is created using SQLite3
+- This app is built in Python using packages pandas, sqlalchemy, flask, sklearn, json
+- The model is created using sklearn in Python
+- The website pages are created using HTML, bootstrap, Javascript, and CSS
+- The visualizations are created using Javascript, D3, and Plotly
+
 ## Revisions from original
 Homepage changes
 - Change layout to a simpler, easier to read format
