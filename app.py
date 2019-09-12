@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from app_functions import fill_df, queryString, splitSearch, threeBeers
 import sqlalchemy
@@ -25,16 +24,13 @@ app.secret_key=b'_5#y2L"F4Q8z\n\xec]/'
 # Hack to deal w/ relative references
 dir_path = os.path.dirname(os.path.realpath(__file__))
 abs_db_path = os.path.join(dir_path,"database", "db.sqlite")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("postgres://exzkymohlnzboz:004b35d6b9e258e72abec9b4e44864746a5c365378a603543579b87bf8064a10@ec2-50-16-197-244.compute-1.amazonaws.com:5432/dbthkmgkv6ce98", "") or f"sqlite:///{abs_db_path}"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("postgres://tehryzcjezrkao:6c98b6e74921f14d014bbb6d99b2837143ee23f0131f36aeac19c746adb6b6a3@ec2-174-129-226-232.compute-1.amazonaws.com:5432/d3jeg8foflomm7", "") or f"sqlite:///{abs_db_path}"
 
 db = SQLAlchemy(app)
 
 inspector = inspect(db.engine)
 print("Check db table name: ")
 print(inspector.get_table_names())
-
-# disk_engine = db.engine
-# print (disk_engine.table_names())
 
 # Routes ----------------------------
 @app.route("/",endpoint ="new")
@@ -109,15 +105,6 @@ def run():
 def group():
     """Return the group page."""
     return  render_template("group.html")
-
-    
-# @app.route("/all")
-# def all():
-#     results1 = pd.read_sql(f"""SELECT * FROM {inspector.get_table_names()[0]} """, con=db.engine)
-#     dict_results = results1.to_json(orient='records')
-
-#     """Return all cluster data."""
-#     return dict_results
 
 @app.route("/top")
 def top():
