@@ -4,7 +4,20 @@ Beer Recommender Refined - using Kmeans clustering unsupervised machine learning
 
 Uses larger beer database of 60000+ beer names
 
-Kmeans clustering model cluster -  main beer style by users' overall reviews
+Kmeans clustering model -  main beer styles by users' overall review
+
+## Build
+
+- Python Flask app
+- Python functions used in app
+- template folder containing HTML files
+- static folder containing Javascript files, CSS files, and images
+- database folder containing sqlite file
+
+## Deployment
+
+Website: [http://beerlists.herokuapp.com/]
+Heroku deployment instructions found [here](https://github.com/lprymak/Beer_Choice)
 
 
 Homepage changes
