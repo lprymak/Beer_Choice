@@ -64,74 +64,74 @@
         <div class="main">
             <div class="blur"></div>
         </div>
-        <!-- Top Stats -->
-    <div class="col-12 statcont">
-        <div class="card stats">
-            <div class="card-head dd">
-            </div>
-            <div class="card-body topstats">
-                <hr class="temphr">
-                <h4 class="sectionTitles">Your Picks:</h4>
+<!-- Top Stats -->
+        <div class="col-12 statcont">
+            <div class="card stats">
+                <div class="card-head dd">
+                </div>
+                <div class="card-body topstats">
+                    <hr class="temphr">
+                    <h4 class="sectionTitles">Your Picks:</h4>
                     <div class="card-body listChosen"></div>
-                <hr>
-                <div class="row">
-                    <div class="col-2 liststat" id='ratings1'></div>
-                    <div class="col-8 liststat" id='ratings2'></div>
-                    <div class="col-2 liststat" id='legend'>
-                        <div class="dropdown show pbbtn">
-                            <a class="btn btn-secondary dropdown-toggle scatterbtngr" role="button"
-                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">Overall</a>
-                            <div class="dropdown-menu dropdown-menu-right scatterbtngr"
-                                aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item scatterbtn inactiveDropDown">Overall</a>
-                                <a class="dropdown-item scatterbtn activeDropDown">Taste</a>
-                                <a class="dropdown-item scatterbtn activeDropDown">Palate</a>
-                                <a class="dropdown-item scatterbtn activeDropDown">Aroma</a>
-                                <a class="dropdown-item scatterbtn activeDropDown">Appearance</a>
+                    <hr>
+                    <div class="row">
+                        <div class="col-2 liststat" id='ratings1'></div>
+                        <div class="col-8 liststat" id='ratings2'></div>
+                        <div class="col-2 liststat" id='legend'>
+                            <div class="dropdown show pbbtn">
+                                <a class="btn btn-secondary dropdown-toggle scatterbtngr" role="button"
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Overall</a>
+                                <div class="dropdown-menu dropdown-menu-right scatterbtngr"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item scatterbtn inactiveDropDown">Overall</a>
+                                    <a class="dropdown-item scatterbtn activeDropDown">Taste</a>
+                                    <a class="dropdown-item scatterbtn activeDropDown">Palate</a>
+                                    <a class="dropdown-item scatterbtn activeDropDown">Aroma</a>
+                                    <a class="dropdown-item scatterbtn activeDropDown">Appearance</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <!-- </div> -->
-        <!-- </div> -->
-    <!-- </div> -->
-        <!-- Recommendations -->
-        <div class="row recommendations">
-            <div class="col-12">
-                <div class="card border-0 list">
-                    <div class="card-head grhead">
-                        <h4 class="sectionTitles">Recommendations</h4>
-                    </div>
-                    <div class="card-body" id='list'>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="container.fluid"> -->
-                <div class="row">
-                    <div class="col-lg-12 col-4" id="stat1">
-                        <div class="col-lg-12 col-4" id="stat2">
-                            <div class="col-lg-12 col-4" id="stat3">
-                                <div class="col-lg-12 col-4" id="stat4"></div>
+                    <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- Recommendations -->
+                    <div class="row recommendations">
+                        <div class="col-12">
+                            <div class="card border-0 list">
+                                <div class="card-head grhead">
+                                    <h4 class="sectionTitles">Recommendations</h4>
+                                </div>
+                                <div class="card-body" id='list'>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
+                        <!-- <div class="container.fluid"> -->
+                        <div class="row">
+                            <div class="col-lg-12 col-4" id="stat1">
+                                <div class="col-lg-12 col-4" id="stat2">
+                                    <div class="col-lg-12 col-4" id="stat3">
+                                        <div class="col-lg-12 col-4" id="stat4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
                     </div>
-                <!-- </div> -->
-            </div>
-        </div>
-    </div>
-    <script>
-        var prediction = `{{ prediction }}`;
-        var beer1 = `{{ beer1 }}`;
-        var beer2 = `{{ beer2 }}`;
-        var beer3 = `{{ beer3 }}`;
-    </script>
+                </div>
+                <script>
+                    var prediction = `{{ prediction }}`;
+                    var beer1 = `{{ beer1 }}`;
+                    var beer2 = `{{ beer2 }}`;
+                    var beer3 = `{{ beer3 }}`;
+                </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
-    <script type="text/javascript" src="../static/js/list.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+                <script src="https://d3js.org/d3.v4.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+                <script type="text/javascript" src="../static/js/list.js"></script>
 
 </body>
 

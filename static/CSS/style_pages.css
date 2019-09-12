@@ -221,7 +221,7 @@ li {
   font-weight: bolder;
   color: white;
   z-index: 20;
-  text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 8px #FF1177, 0 0 20px #FF1177, 0 0 40px #FF1177, 0 0 20px #FF1177, 0 0 40px #FF1177;
+  text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 8px #FF1177, 0 0 9px #FF1177, 0 0 10px #FF1177, 0 0 8px #FF1177, 0 0 10px #FF1177;
 }
 .bubbles .card-head, .hm .card-head, .list .card-head, 
 .topEntry .card-head, .modelex .card-head, .defhead,
@@ -253,6 +253,7 @@ li {
   letter-spacing: .1rem;
   word-spacing: -6px;
   font-size: 1.25rem !important;
+  color: white !important;
 }
 .navbar {
   padding: 0rem;
@@ -604,9 +605,15 @@ tr {
 .style_text {
   z-index: 1000;
 }
-.modelex {
+/* .modelex {
   margin-top: 5%;
   margin-left: 5%;
+} */
+.modelex {
+  margin-left: 5%;
+  margin-top: 6%;
+  height: 500px;
+  overflow-y: scroll;
 }
 .model2 p {
   padding-right: 3%;
