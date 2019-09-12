@@ -16,8 +16,8 @@ Kmeans clustering model -  main beer styles by users' overall review
 
 ## Deployment
 
-Website: [http://beerlists.herokuapp.com/]
-Heroku deployment instructions found [here](https://github.com/lprymak/Beer_Choice)
+Website: [http://beerlists.herokuapp.com/]  
+Heroku deployment instructions found [here](https://github.com/lprymak/Beer_Choice)  
 
 
 Homepage changes
