@@ -1,1 +1,1 @@
-web: gunicorn Beer_Choice.app:app
+web: gunicorn app:app
