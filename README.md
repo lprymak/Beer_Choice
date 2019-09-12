@@ -4,7 +4,7 @@ With so many different beers on the market, trying to choose a new beer to try s
 
 After entering one to three of your favorite beers, the app runs your choices through our model and returns a list of new beers to try.  
 
-* Beer Recommender Refined - using Kmeans clustering unsupervised machine learning, Python, Javascript, D3, Plotly
+*Beer Recommender Refined - using Kmeans clustering unsupervised machine learning, Python, Javascript, D3, Plotly
 
 Uses larger beer database of 60000+ beer names
 
