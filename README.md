@@ -10,7 +10,7 @@ Uses larger beer database of 60000+ beer names
 
 Kmeans clustering model -  main beer styles by users' overall review
 
-## Build
+## Docs
 
 - Python Flask app
 - Python functions used in app
@@ -21,9 +21,11 @@ Kmeans clustering model -  main beer styles by users' overall review
 ## Deployment
 
 Website: [http://beerlists.herokuapp.com/]  
-Heroku deployment instructions found [here](https://github.com/lprymak/Beer_Choice)  
+Heroku deployment instructions found [here](https://github.com/lprymak/Beer_Choice) 
 
+## Build
 
+## Revisions from original
 Homepage changes
 - Change layout to a simpler, easier to read format
 - Add links to data sites
